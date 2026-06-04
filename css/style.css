@@ -1,0 +1,741 @@
+/* ==========================
+   GOOGLE FONT
+========================== */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+:root{
+    --bg-color:#0f172a;
+    --card-color:#1e293b;
+    --sidebar-color:#111827;
+    --primary:#3b82f6;
+    --text:#f8fafc;
+    --text-light:#cbd5e1;
+    --border:#334155;
+}
+
+/* ==========================
+   RESET & GLOBAL BASE
+========================== */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:var(--bg-color);
+    color:var(--text);
+    display:block;
+    overflow-x: hidden;
+}
+
+/* ==========================
+   SIDEBAR (DESKTOP VIEWPORT)
+========================== */
+.sidebar{
+    position:fixed;
+    left:0;
+    top:0;
+    width:260px;
+    height:100vh;
+    background:var(--sidebar-color);
+    padding:40px 25px;
+    border-right:1px solid var(--border);
+    z-index:1000;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.logo{
+    text-align:center;
+    margin-bottom:50px;
+}
+
+.logo h2{
+    color:var(--primary);
+    font-size:40px;
+    font-weight:800;
+}
+
+.sidebar ul{
+    list-style:none;
+}
+
+.sidebar ul li{
+    margin-bottom:20px;
+}
+
+.sidebar ul li a{
+    color:var(--text-light);
+    text-decoration:none;
+    font-size:16px;
+    transition:.3s ease;
+    display:flex;
+    align-items:center;
+    gap: 15px;
+    padding:12px 15px;
+    border-radius:8px;
+}
+
+.sidebar ul li a:hover,
+.sidebar ul li a.active {
+    background:var(--primary);
+    color:white;
+}
+
+/* ==========================
+   MOBILE TOGGLE COMPONENT
+========================== */
+.mobile-toggle {
+    display: none;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 45px;
+    height: 45px;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 20px;
+    cursor: pointer;
+    z-index: 1100;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s;
+}
+
+.mobile-toggle:hover {
+    background: #2563eb;
+}
+
+/* ==========================
+   MAIN CONTENT CONFIGURATIONS
+========================== */
+section {
+    margin-left:260px;
+    min-height:100vh;
+    padding:100px 80px;
+    opacity:0;
+    transform:translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+section.section-show {
+    opacity:1;
+    transform:translateY(0);
+}
+
+section h2{
+    font-size:40px;
+    margin-bottom:40px;
+    position:relative;
+}
+
+section h2::after{
+    content:'';
+    width:70px;
+    height:4px;
+    background:var(--primary);
+    position:absolute;
+    left:0;
+    bottom:-10px;
+}
+
+/* ==========================
+   HERO LAYOUT PANE
+========================== */
+.hero{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+}
+
+.hero img{
+    width:220px;
+    height:220px;
+    border-radius:50%;
+    object-fit:cover;
+    border:6px solid var(--primary);
+    margin-bottom:25px;
+}
+
+.hero h1{
+    font-size:55px;
+    font-weight:800;
+}
+
+.hero h3{
+    color:var(--primary);
+    margin:15px 0;
+    font-size:24px;
+    min-height: 36px;
+}
+
+.hero p{
+    max-width:700px;
+    color:var(--text-light);
+    line-height:1.8;
+}
+
+.hero-buttons{
+    margin-top:35px;
+}
+
+.btn{
+    display:inline-block;
+    padding:14px 28px;
+    background:var(--primary);
+    color:white;
+    text-decoration:none;
+    border-radius:10px;
+    margin:10px;
+    border: none;
+    font-size: 16px;
+    font-family: inherit;
+    cursor: pointer;
+    transition:.3s;
+}
+
+.btn:hover{
+    transform:translateY(-4px);
+    box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+}
+
+/* ==========================
+   ABOUT & STATISTIC METRICS
+========================== */
+#about p{
+    font-size:18px;
+    line-height:1.9;
+    color:var(--text-light);
+}
+
+.stats{
+    display:grid;
+    grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+    gap:25px;
+    margin-top: 20px;
+}
+
+.stat-card{
+    background: var(--card-color);
+    padding:30px;
+    text-align:center;
+    border-radius:15px;
+    border: 1px solid var(--border);
+}
+
+.counter{
+    font-size:42px;
+    color: var(--primary);
+    font-weight:700;
+    margin-bottom: 5px;
+}
+
+/* ==========================
+   SKILLS & TECH GRIDS
+========================== */
+.skills-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:20px;
+}
+
+.skill-card{
+    background:var(--card-color);
+    padding:25px;
+    border-radius:15px;
+    text-align:center;
+    font-weight:600;
+    border:1px solid var(--border);
+    opacity:0;
+    transform:translateY(30px);
+    transition: all 0.5s ease;
+}
+
+.skill-card:hover{
+    transform:translateY(-8px);
+    border-color:var(--primary);
+}
+
+.tech-grid{
+    display:grid;
+    grid-template-columns: repeat(auto-fit,minmax(160px,1fr));
+    gap:20px;
+}
+
+.tech-grid div{
+    background: var(--card-color);
+    padding:25px;
+    text-align:center;
+    border-radius:12px;
+    border: 1px solid var(--border);
+}
+
+.tech-grid i{
+    font-size:40px;
+    display:block;
+    margin-bottom:10px;
+    color: var(--primary);
+}
+
+/* ==========================
+   PROJECT CONTAINERS
+========================== */
+/* ==========================
+   PROJECTS (UPDATED GALLERY)
+========================== */
+/* ==========================
+   PROJECTS (FIXED GRID & COLORS)
+========================== */
+.project-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+    padding: 20px 0;
+    width: 100%;
+}
+
+.project-card {
+    background: var(--card-color) !important; /* Forces the theme slate color profile */
+    border-radius: 15px;
+    border: 1px solid var(--border);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.project-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--primary);
+    box-shadow: 0 10px 20px rgba(59, 130, 246, 0.15);
+}
+
+/* Image Wrapper Layout block */
+.project-image {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    background: var(--sidebar-color);
+    border-bottom: 1px solid var(--border);
+}
+
+.project-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.project-card:hover .project-image img {
+    transform: scale(1.04);
+}
+
+/* Text Detail Info Block */
+.project-info {
+    padding: 25px;
+    background: var(--card-color); /* Explicit layout coloration override */
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.project-card h3 {
+    color: var(--text); /* Uses theme text styling color, not default white text labels */
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    transition: color 0.3s;
+}
+
+.project-card:hover h3 {
+    color: var(--primary);
+}
+
+.project-card p {
+    color: var(--text-light); /* Sleek slate-gray readable font sizing */
+    line-height: 1.7;
+    font-size: 14px;
+    margin-bottom: 20px;
+    flex-grow: 1;
+}
+
+/* Technology Micro-Pills */
+.tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.tech-stack span {
+    background: rgba(59, 130, 246, 0.1);
+    color: var(--primary);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+    border: 1px solid rgba(59, 130, 246, 0.2);
+}
+
+/* Lower Project Action Buttons */
+.btn-sm {
+    align-self: flex-start;
+    padding: 10px 20px;
+    background: transparent;
+    color: var(--text);
+    border: 1px solid var(--border);
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.btn-sm:hover {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* Micro Tech Pill Tags */
+.tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.tech-stack span {
+    background: rgba(59, 130, 246, 0.1); /* Soft transparent primary color background */
+    color: var(--primary);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+    border: 1px solid rgba(59, 130, 246, 0.2);
+}
+
+/* Action Buttons inside Card */
+.btn-sm {
+    align-self: flex-start; /* Keeps the button from stretching wide across card spaces */
+    padding: 10px 20px;
+    background: transparent;
+    color: var(--text);
+    border: 1px solid var(--border);
+    text-decoration: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.btn-sm:hover {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* ==========================
+   TIMELINE CONFIGURATIONS
+========================== */
+.timeline{
+    position:relative;
+}
+
+.timeline::before{
+    content:'';
+    position:absolute;
+    left:20px;
+    width:3px;
+    height:100%;
+    background:var(--primary);
+}
+
+.timeline-item{
+    position:relative;
+    margin-left:60px;
+    margin-bottom:40px;
+    background:var(--card-color);
+    padding:25px;
+    border-radius:15px;
+    border:1px solid var(--border);
+    opacity:0;
+    transform:translateY(30px);
+    transition: all 0.6s ease;
+}
+
+.timeline-item::before{
+    content:'';
+    width:18px;
+    height:18px;
+    border-radius:50%;
+    background:var(--primary);
+    position:absolute;
+    left:-49px;
+    top:30px;
+    border: 4px solid var(--bg-color);
+}
+
+.timeline-item h3{
+    color:var(--primary);
+}
+
+.timeline-item span{
+    color:#94a3b8;
+    display:block;
+    margin:10px 0;
+}
+
+.timeline-item p{
+    color:var(--text-light);
+}
+
+/* ==========================
+   CONTACT SECTION & FORM
+========================== */
+#contact{
+    text-align:center;
+}
+
+#contact p{
+    color:var(--text-light);
+}
+
+.contact-links{
+    margin-top:40px;
+    margin-bottom: 40px;
+}
+
+.contact-links a{
+    width:60px;
+    height:60px;
+    display:inline-flex;
+    justify-content:center;
+    align-items:center;
+    background:var(--card-color);
+    color:white;
+    text-decoration:none;
+    border-radius:50%;
+    margin:10px;
+    font-size:24px;
+    transition:.3s;
+    border: 1px solid var(--border);
+}
+
+.contact-links a:hover{
+    background:var(--primary);
+    transform:translateY(-5px);
+    border-color: var(--primary);
+}
+
+.contact-form{
+    max-width:700px;
+    margin:auto;
+}
+
+.contact-form input,
+.contact-form textarea{
+    width:100%;
+    padding:15px;
+    margin:10px 0;
+    border:1px solid var(--border);
+    border-radius:10px;
+    background:var(--card-color);
+    color:white;
+    font-family: inherit;
+    font-size: 15px;
+    transition: border-color 0.3s;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    outline: none;
+    border-color: var(--primary);
+}
+
+.contact-form textarea{
+    min-height:180px;
+    resize: vertical;
+}
+
+/* ==========================
+   SCROLL INTERSECTION STATES
+========================== */
+.project-card.show,
+.skill-card.show,
+.timeline-item.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* ==========================
+   SCROLL TO TOP BUTTON
+========================== */
+.scroll-top-btn{
+    position:fixed;
+    bottom:30px;
+    right:30px;
+    width:50px;
+    height:50px;
+    border:none;
+    border-radius:50%;
+    background:var(--primary);
+    color:white;
+    cursor:pointer;
+    opacity:0;
+    pointer-events:none;
+    transition:.3s;
+    z-index:9999;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.scroll-top-btn.show{
+    opacity:1;
+    pointer-events:auto;
+}
+
+/* ==========================
+   FOOTER FRAMEWORK
+========================== */
+.footer{
+    margin-left:260px;
+    background:var(--sidebar-color);
+    padding:50px;
+    text-align:center;
+    border-top: 1px solid var(--border);
+}
+
+.footer h3{
+    color:var(--primary);
+    margin-bottom: 10px;
+}
+
+.footer-social{
+    margin:20px 0;
+}
+
+.footer-social a{
+    margin:0 15px;
+    color:var(--text-light);
+    font-size:24px;
+    transition: color 0.3s;
+}
+
+.footer-social a:hover {
+    color: var(--primary);
+}
+
+.copyright{
+    color:#94a3b8;
+    font-size: 14px;
+}
+
+/* ==========================
+   FLOATING IMG ANIMATION
+========================== */
+.loaded .hero img{
+    animation:float 3s ease-in-out infinite;
+}
+
+@keyframes float{
+    0%,100%{ transform:translateY(0); }
+    50%{ transform:translateY(-12px); }
+}
+
+/* ==========================
+   RESPONSIVE MEDIA INLINE STYLES
+========================== */
+@media(max-width:991px){
+    .mobile-toggle {
+        display: flex;
+    }
+
+    .sidebar {
+        transform: translateX(-100%);
+        width: 280px;
+        box-shadow: 5px 0 15px rgba(0,0,0,0.5);
+    }
+
+    .sidebar.active {
+        transform: translateX(0);
+    }
+
+    section {
+        margin-left:0;
+        padding: 80px 30px;
+    }
+
+    .footer {
+        margin-left: 0;
+    }
+
+    .hero h1{
+        font-size:38px;
+    }
+
+    .hero img{
+        width:180px;
+        height:180px;
+    }
+}
+
+@media(max-width:576px) {
+    .hero h1 {
+        font-size: 32px;
+    }
+    .hero h3 {
+        font-size: 20px;
+    }
+    section h2 {
+        font-size: 32px;
+    }
+}
+.projects-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 2rem 0;
+}
+
+.project-card {
+    background: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+}
+
+.project-image img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover; /* This stops your screenshots from stretching out of shape */
+}
+
+.project-info {
+    padding: 1.5rem;
+}
+
+.tech-stack span {
+    display: inline-block;
+    background: #f0f0f0;
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    margin-right: 0.5rem;
+    margin-bottom: 1rem;
+}
