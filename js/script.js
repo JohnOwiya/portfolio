@@ -2,7 +2,7 @@
 // GLOBAL NAVIGATION INITIALIZATION & MOBILE DRAWER
 // ==========================================
 document.addEventListener("DOMContentLoaded", () => {
-    // Generate Mobile Navigation Hamburger Trigger via JS Injection
+    // Generate mobile navigation trigger
     const mobileToggle = document.createElement("button");
     mobileToggle.classList.add("mobile-toggle");
     mobileToggle.setAttribute("aria-label", "Toggle Navigation");
@@ -12,7 +12,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const sidebar = document.querySelector(".sidebar");
     const navLinks = document.querySelectorAll(".sidebar ul li a");
 
-    // Click interceptor to open and close slide drawer
     mobileToggle.addEventListener("click", () => {
         sidebar.classList.toggle("active");
         const icon = mobileToggle.querySelector("i");
@@ -20,7 +19,6 @@ document.addEventListener("DOMContentLoaded", () => {
         icon.classList.toggle("fa-times");
     });
 
-    // Dismiss drawer when clicking individual scroll links
     navLinks.forEach(link => {
         link.addEventListener("click", () => {
             sidebar.classList.remove("active");
@@ -32,23 +30,20 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // ==========================================
-// SMOOTH SCROLL EVENT LISTENER
+// SMOOTH SCROLL
 // ==========================================
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
+    anchor.addEventListener('click', function (e) {
         e.preventDefault();
         const target = document.querySelector(this.getAttribute('href'));
         if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
     });
 });
 
 // ==========================================
-// ACTIVE SCROLL-SPY SIDEBAR ELEMENT HIGHLIGHTING
+// ACTIVE SCROLL-SPY SIDEBAR HIGHLIGHTING
 // ==========================================
 const sections = document.querySelectorAll("section");
 const navLinks = document.querySelectorAll(".sidebar ul li a");
@@ -61,7 +56,6 @@ window.addEventListener("scroll", () => {
         const sectionTop = section.offsetTop;
         const sectionHeight = section.clientHeight;
 
-        // Proximity calculation ensuring active tracking targets stay isolated inside viewport windows
         if (scrollPos >= sectionTop - 220 && scrollPos < sectionTop + sectionHeight - 220) {
             current = section.getAttribute("id");
         }
@@ -77,9 +71,9 @@ window.addEventListener("scroll", () => {
 });
 
 // ==========================================
-// SCROLL REVEAL (CARDS DISPLAY DELAY)
+// SCROLL REVEAL FOR CARDS & LOG ENTRIES
 // ==========================================
-const revealElements = document.querySelectorAll(".project-card, .skill-card, .timeline-item");
+const revealElements = document.querySelectorAll(".project-card, .timeline-item");
 
 const revealOnScroll = () => {
     revealElements.forEach(element => {
@@ -94,30 +88,10 @@ const revealOnScroll = () => {
 };
 
 window.addEventListener("scroll", revealOnScroll);
-revealOnScroll(); // Trigger execution sweep on page load
+revealOnScroll();
 
 // ==========================================
-// TYPING SPEED SIMULATION LOOP
-// ==========================================
-const typingText = "Software Engineer | Java Developer | Web Developer";
-let index = 0;
-const typingElement = document.querySelector(".hero h3");
-
-function typeText() {
-    if (index < typingText.length) {
-        typingElement.textContent += typingText.charAt(index);
-        index++;
-        setTimeout(typeText, 80);
-    }
-}
-
-if (typingElement) {
-    typingElement.textContent = "";
-    typeText();
-}
-
-// ==========================================
-// METRIC COUNTUP RUNNER HOOK
+// METRIC COUNTUP
 // ==========================================
 const counters = document.querySelectorAll(".counter");
 const speed = 200;
@@ -138,9 +112,6 @@ const startCounter = (counter) => {
     updateCount();
 };
 
-// ==========================================
-// ACHIEVEMENTS OVERVIEW INTERSECTION OBSERVER
-// ==========================================
 const counterSection = document.querySelector("#stats");
 
 if (counterSection) {
@@ -157,7 +128,7 @@ if (counterSection) {
 }
 
 // ==========================================
-// FULL-PAGE SECTION VIEWPORT OBSERVATIONS
+// SECTION VIEWPORT FADE-IN
 // ==========================================
 const fadeSections = document.querySelectorAll("section");
 
@@ -174,7 +145,7 @@ fadeSections.forEach(section => {
 });
 
 // ==========================================
-// BACK TO TOP UTILITY FUNCTION
+// BACK TO TOP
 // ==========================================
 const topBtn = document.createElement("button");
 topBtn.innerHTML = '<i class="fas fa-arrow-up"></i>';
@@ -190,14 +161,11 @@ window.addEventListener("scroll", () => {
 });
 
 topBtn.addEventListener("click", () => {
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth"
-    });
+    window.scrollTo({ top: 0, behavior: "smooth" });
 });
 
 // ==========================================
-// GLOBAL EVENT LOADING FLAG
+// PAGE LOAD FLAG
 // ==========================================
 window.addEventListener("load", () => {
     document.body.classList.add("loaded");
